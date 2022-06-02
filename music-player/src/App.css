@@ -1,0 +1,35 @@
+a {
+  text-decoration: none;
+}
+
+.App {
+  text-align: center;
+}
+
+.App .main-page {
+  position: fixed;
+  top: 70px;
+  right: 0;
+  left: 240px;
+  bottom: 0;
+  background-color: var(--dark-bg);
+  overflow-y: scroll;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+

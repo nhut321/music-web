@@ -1,0 +1,30 @@
+.playlist-section {
+	margin-bottom: 2rem;
+}
+
+.playlist-section__header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--dark-grey-color);
+}
+
+.playlist-section__header-heading {
+	color: var(--dark-color);
+}
+
+.playlist-section__header-link {
+	color: var(--dark-grey-color);
+}
+
+.playlist-section__header-link:hover {
+	color: var(--dark-color);
+}
+
+.playlist-section__header-link > span {
+	margin-right: 0.5rem;
+}
+
+.playlist-section__list {
+	display: flex;
+}
