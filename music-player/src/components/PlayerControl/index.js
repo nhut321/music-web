@@ -19,7 +19,7 @@ export default function PlayerControl() {
 	useEffect(() => {
 		const fetchData = async () => {
 			const result = await axios.get(baseApi.baseUrl + '/api/v1/zing/song/' + song.encodeId)
-			setAudioFetch(result.data.data)
+			setAudioFetch(result.data.data) 
 		}
 		fetchData()
 	},[])

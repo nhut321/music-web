@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect, useRef } from 'react'
 import { appContext } from '../../contexts/appContext'
 import { useNavigate } from 'react-router-dom'
 import avatar from '../../assets/image/avatar.png'
@@ -12,6 +12,7 @@ export default function Header() {
 	const [searchInput, setSearchInput] = useState('')
 	const [showSetting, setShowSetting] = useState(false)
 	const [showUserSub, setShowUserSub] = useState(false)
+	const subRef = useRef()
 
 	const toggleShowSetting = () => {
 		setShowSetting(v => !v)
@@ -20,7 +21,21 @@ export default function Header() {
 		setShowUserSub(v => !v)
 	}
 
+	useEffect(() => {
+		const handleShow = (e) => {
+			if(!subRef.current.contains(e.target)) {
+				setShowSetting(false)
+				setShowUserSub(false)
+			}
+		}
+		document.addEventListener('mousedown', handleShow)
 
+
+		return () => {
+			document.removeEventListener('mousedown', handleShow)
+		}
+
+	},[showSetting, showUserSub])
 
 	const searchFn = async (e) => {
 		e.preventDefault()
@@ -65,7 +80,7 @@ export default function Header() {
 						</div>
 						<div className={showSetting ? 'header-right__item-sub active' : 'header-right__item-sub'}>
 
-							<div className="header-right__item-sub-list">
+							<div ref={subRef} className="header-right__item-sub-list">
 								<div className="header-right__item-sub-item">
 									<div className="sub-item__icon">
 										<i className="fa-solid fa-ban"></i>
@@ -119,7 +134,7 @@ export default function Header() {
 						</div>
 						<div className={showUserSub ? 'header-right__item-sub active' : 'header-right__item-sub'}>
 
-							<div className="header-right__item-sub-list">
+							<div ref={subRef} className="header-right__item-sub-list">
 								<div className="header-right__item-sub-item">
 									<div className="sub-item__icon">
 										<i className="fa-solid fa-gem"></i>
